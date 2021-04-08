@@ -1,0 +1,11 @@
+.miniatures {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.miniaturesImg {
+  box-sizing: border-box;
+  width: auto;
+  height: 130px;
+}

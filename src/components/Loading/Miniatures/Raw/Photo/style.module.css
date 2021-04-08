@@ -1,0 +1,33 @@
+.photoBlock {
+  width: auto;
+  overflow: hidden;
+  margin: 0 4px;
+  flex: 0.668777 1 0%;
+  cursor: pointer;
+}
+
+.photolink {
+  display: flex;
+  position: relative;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.hoverAction {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000061;
+}
+
+.photoBlock:hover .hoverAction {
+  display: flex;
+}
