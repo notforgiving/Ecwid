@@ -3,13 +3,9 @@ import { useSelector } from "react-redux";
 import Photo from "./Photo";
 
 import { PhotoType } from "./../../../../types";
+import { RawProps } from "./../../../../types";
 
 import styles from "./style.module.css";
-
-interface RawProps {
-  array: Array<PhotoType>;
-  number: number;
-}
 
 function index({ array, number }: RawProps) {
   const { raws } = useSelector((state: any) => state);

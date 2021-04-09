@@ -6,14 +6,10 @@ import { useDispatch } from "react-redux";
 
 import { deletePhoto } from "./../../../../../redux/actions/photos";
 
+import { PhotoProps } from "./../../../../../types";
+
 import { blue } from "@material-ui/core/colors";
 import styles from "./style.module.css";
-
-interface PhotoProps {
-  photo: string;
-  flexGrow: number;
-  number: number;
-}
 
 function index({ photo, flexGrow, number }: PhotoProps) {
   const dispatch = useDispatch();
