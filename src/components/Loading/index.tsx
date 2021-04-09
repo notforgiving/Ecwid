@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { loadingPhotos, sendPhotos } from "../../redux/actions/photos";
 import { PhotoType } from "./../../types";
-
 import styles from "./style.module.css";
 
 function index() {
@@ -108,7 +107,7 @@ function index() {
         <Button variant="contained" color="primary" onClick={showUrlInput}>
           Ввести URL
         </Button>
-        <label htmlFor="contained-button-file">
+        <label htmlFor="contained-button-file" className={styles.buttonsLabel}>
           <Button variant="contained" color="primary" component="span">
             Загрузить файл
           </Button>
