@@ -3,6 +3,7 @@ import { takeEvery } from "redux-saga/effects";
 import { DataAction } from "./../../types/";
 import { actionsForGallery, addPhotos, putPhotos } from "./../actions/photos";
 import { setOk, setNone } from "./../actions/status";
+import { setMessage } from "./../actions/message";
 import { PhotoType } from "./../../types";
 
 function getFlexGrow(url: string) {
@@ -51,11 +52,20 @@ function* workerPutPhotos(action: DataAction) {
 }
 
 function* workerLoadPhotos(action: DataAction) {
-  const result: HTMLFormElement = yield call(getFlexGrow, action.payload);
-  const flexGrow = result.width / result.height;
-  yield put(addPhotos(action.payload, flexGrow));
-  yield put(setOk());
-  yield put(setNone());
+  try {
+    const result: HTMLFormElement = yield call(getFlexGrow, action.payload);
+    const flexGrow = result.width / result.height;
+    yield put(addPhotos(action.payload, flexGrow));
+    yield put(setOk());
+    yield put(setNone());
+  } catch (error) {
+    yield put(
+      setMessage({
+        text: "Неверный тип файла по ссылке",
+        error: true,
+      })
+    );
+  }
 }
 
 export function* watchLoadPhotos() {
