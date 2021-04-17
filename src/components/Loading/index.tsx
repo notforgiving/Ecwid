@@ -1,12 +1,17 @@
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { Typography } from "@material-ui/core";
 import Miniatures from "./Miniatures";
 import Message from "./Message";
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadingPhotos, sendPhotos } from "../../redux/actions/photos";
+import {
+  loadingPhotos,
+  sendPhotos,
+  cleanGallery,
+} from "../../redux/actions/photos";
 import { PhotoType } from "./../../types";
 import styles from "./style.module.css";
 
@@ -60,6 +65,10 @@ function index() {
     reset();
   };
 
+  const onCleanGallery = () => {
+    dispatch(cleanGallery());
+  };
+
   const reset = () => {
     setMessage({
       flag: false,
@@ -103,13 +112,33 @@ function index() {
           severity={message.error ? "error" : "success"}
         />
       )}
+
+      <div>
+        <Typography color="primary" variant="h4">
+          Создайте свою галерею изображений
+        </Typography>
+      </div>
+      <div>
+        <Typography color="primary" variant="h5">
+          1. Загрузите url из интернета
+        </Typography>
+        <Typography color="primary" variant="h5">
+          2. Или загрузите файл{" "}
+          <a href="https://cloud.mail.ru/public/cT8g/XdJgGNLTA" target="_blank">
+            JSON
+          </a>
+        </Typography>
+      </div>
       <div className={styles.buttons}>
         <Button variant="contained" color="primary" onClick={showUrlInput}>
           Ввести URL
         </Button>
+        <Button variant="contained" color="primary" onClick={onCleanGallery}>
+          Удалить галерею
+        </Button>
         <label htmlFor="contained-button-file" className={styles.buttonsLabel}>
           <Button variant="contained" color="primary" component="span">
-            Загрузить файл
+            Загрузить файл JSON
           </Button>
         </label>
         <input
