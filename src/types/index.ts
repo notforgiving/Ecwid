@@ -12,6 +12,11 @@ export interface PhotoType {
   flexGrow: number
 }
 
+export interface MessageType {
+  text: string,
+  error: boolean
+}
+
 export interface iMessageProps {
   string: string;
   severity: "success" | "info" | "warning" | "error";

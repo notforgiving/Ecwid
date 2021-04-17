@@ -12,39 +12,28 @@ import {
   sendPhotos,
   cleanGallery,
 } from "../../redux/actions/photos";
+import { setMessage } from "./../../redux/actions/message";
 import { PhotoType } from "./../../types";
 import styles from "./style.module.css";
 
 function index() {
   const dispatch = useDispatch();
-  const { status, photos } = useSelector((state: any) => state);
+  const { status, photos, message } = useSelector((state: any) => state);
 
   const [method, setMethod] = useState(false);
   const [url, setUrl] = useState("");
-  const [message, setMessage] = useState({
-    flag: false,
-    text: "",
-    error: false,
-  });
 
   useEffect(() => {
     switch (status) {
       case "ok": {
         setUrl("");
-        setMessage({
-          ...message,
-          flag: true,
-          text: "Фотография успешно загружена",
-        });
+        dispatch(
+          setMessage({
+            text: "Фотография успешно загружена",
+            error: false,
+          })
+        );
         setMethod(false);
-        break;
-      }
-      case "none": {
-        setMessage({
-          ...message,
-          flag: false,
-          text: "",
-        });
         break;
       }
       default:
@@ -54,6 +43,12 @@ function index() {
 
   const showUrlInput = () => {
     setMethod(!method);
+    dispatch(
+      setMessage({
+        text: "",
+        error: false,
+      })
+    );
   };
 
   const onChangeUrl = (event: any) => {
@@ -67,14 +62,15 @@ function index() {
 
   const onCleanGallery = () => {
     dispatch(cleanGallery());
+    dispatch(
+      setMessage({
+        text: "",
+        error: false,
+      })
+    );
   };
 
   const reset = () => {
-    setMessage({
-      flag: false,
-      text: "",
-      error: false,
-    });
     setMethod(false);
     setUrl("");
   };
@@ -95,18 +91,13 @@ function index() {
         dispatch(sendPhotos(data));
         reset();
       } else {
-        setMessage({
-          flag: true,
-          text: "Неверный тип файла",
-          error: true,
-        });
       }
     };
   };
 
   return (
     <div className={styles.loading}>
-      {message.flag && (
+      {message.text != "" && (
         <Message
           string={message.text}
           severity={message.error ? "error" : "success"}
