@@ -6,7 +6,12 @@ export enum actionsForGallery {
   LOADING_PHOTOS = "LOADING_PHOTOS",
   SEND_PHOTOS = "SEND_PHOTOS",
   DELETE_PHOTO = "DELETE_PHOTO",
+  CLEAN_GALLERY = "CLEAN_GALLERY",
 }
+
+export const cleanGallery = (): BaseAction => ({
+  type: actionsForGallery.CLEAN_GALLERY,
+});
 
 export const putPhotos = (photosArray: Array<PhotoType>): DataAction => ({
   type: actionsForGallery.PUT_PHOTOS,
