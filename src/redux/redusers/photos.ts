@@ -11,7 +11,7 @@ const initialState = [
     flexGrow: 1.3333333333333333,
   },
   {
-    url: "http://verbum.syktsu.ru/wp-content/uploads/2021/01/elbrus.jpg",
+    url: "https://proprikol.ru/wp-content/uploads/2020/04/kartinki-vulkany-27.jpg",
     flexGrow: 1.5037593984962405,
   },
   {
