@@ -113,7 +113,7 @@ function index() {
         </Typography>
         <Typography color="primary" variant="h5">
           2. Или загрузите файл{" "}
-          <a href="https://cloud.mail.ru/public/cT8g/XdJgGNLTA" target="_blank">
+          <a href="https://raw.githubusercontent.com/notforgiving/Ecwid/master/src/data.json" target="_blank">
             JSON
           </a>
         </Typography>
