@@ -83,10 +83,8 @@ function index() {
     reader.onload = function () {
       if (file && file.type === "application/json") {
         const json = JSON.parse(String(reader.result));
-        Object.keys(json).forEach((key: string) => {
-          json[key].map((photo: PhotoType) => {
-            data.push(photo.url);
-          });
+        json.forEach((dt:any) => {
+          data.push(dt.url)
         });
         dispatch(sendPhotos(data));
         reset();

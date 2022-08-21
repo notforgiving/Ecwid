@@ -32,3 +32,13 @@ export interface PhotoProps {
   flexGrow: number;
   number: number;
 }
+
+export interface IInitialState {
+  message:  {
+    error:boolean;
+    text: string;
+  };
+  raws: number;
+  status: string;
+  photos: PhotoType[]
+}
